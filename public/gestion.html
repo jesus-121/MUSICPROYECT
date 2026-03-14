@@ -1,0 +1,47 @@
+<div class="main-layout">
+    <main>
+        <div style="grid-column: 1 / -1;">
+            <h2 style="font-weight: 800; color: var(--primary); margin-bottom: 20px;">Gestión de Multimedia</h2>
+        </div>
+
+        <div class="admin-section">
+            <div id="dropZone">
+                <p id="dropZoneText">Arrastra tus MP3s aquí</p>
+            </div>
+            
+            <input type="text" id="addTitle" class="admin-input" placeholder="Título de la canción">
+            <input type="text" id="addArtist" class="admin-input" placeholder="Artista">
+            
+            <label style="font-size: 11px; color: var(--primary); font-weight: 800; display: block; margin-bottom: 10px;">ASIGNAR GÉNERO:</label>
+            <div class="genre-grid-admin" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-bottom: 20px;">
+                <button type="button" class="genre-tag" onclick="setGeneroRegistro('Banda')">Banda</button>
+                <button type="button" class="genre-tag" onclick="setGeneroRegistro('Pop')">Pop</button>
+                <button type="button" class="genre-tag" onclick="setGeneroRegistro('Rock')">Rock</button>
+                <button type="button" class="genre-tag" onclick="setGeneroRegistro('Cumbia')">Cumbia</button>
+                <button type="button" class="genre-tag" onclick="setGeneroRegistro('Mariachi')">Mariachi</button>
+                <button type="button" class="genre-tag" onclick="setGeneroRegistro('Electronic')">Electro</button>
+                <button type="button" class="genre-tag" onclick="setGeneroRegistro('Salsa')">Salsa</button>
+                <button type="button" class="genre-tag" onclick="setGeneroRegistro('Jazz')">Jazz</button>
+                <button type="button" class="genre-tag" onclick="setGeneroRegistro('Hip-Hop')">Hip-hop</button>
+            </div>
+            <input type="hidden" id="addGenre" value="Varios">
+            
+            <button type="button" id="saveBtn" class="btn-save">GUARDAR EN IMER</button>
+        </div>
+
+        <div class="admin-section" style="border-color: rgba(239, 68, 68, 0.2);">
+            <h3 style="font-size: 14px; color: #ef4444; margin-bottom: 15px;">Eliminar de Biblioteca</h3>
+            <input type="text" id="deleteSearch" class="admin-input" placeholder="Buscar para borrar..." oninput="buscarParaEliminar()">
+            <div id="deleteResults" style="height: 300px; overflow-y: auto;"></div>
+        </div>
+    </main>
+
+    <aside class="side-queue">
+        <div class="on-air-status">
+            <span class="dot"></span> PRÓXIMO AL AIRE
+        </div>
+        <div class="queue-list" id="queueList">
+            <p style="font-size: 12px; color: var(--text-muted);">Cola vacía</p>
+        </div>
+    </aside>
+</div>

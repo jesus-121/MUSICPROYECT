@@ -1,0 +1,25 @@
+<div style="display: flex; flex-direction: column; height: 100%;">
+    <h2 style="margin-bottom: 20px; font-weight: 800; color: var(--primary);">Explorar por Géneros</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; margin-bottom: 25px;">
+        <button class="genre-tag" onclick="setGenero('Banda', this)">Banda</button>
+        <button class="genre-tag" onclick="setGenero('Corridos', this)">Corridos</button>
+        <button class="genre-tag" onclick="setGenero('Pop', this)">Pop</button>
+        <button class="genre-tag" onclick="setGenero('Rock', this)">Rock</button>
+        <button class="genre-tag" onclick="setGenero('Cumbia', this)">Cumbia</button>
+        <button class="genre-tag" onclick="setGenero('Mariachi', this)">Mariachi</button>
+        <button class="genre-tag" onclick="setGenero('Electronic', this)">Electro</button>
+        <button class="genre-tag" onclick="setGenero('Jazz', this)">Jazz</button>
+        <button class="genre-tag" onclick="setGenero('Salsa', this)">Salsa</button>
+        <button class="genre-tag" onclick="setGenero('Hip-Hop', this)">Hip-Hop</button>
+    </div>
+
+    <div style="position: relative; margin-bottom: 20px;">
+        <input type="text" id="searchInput" class="admin-input" 
+               placeholder="buscar por nombre o artista..." 
+               oninput="filterSongs()">
+    </div>
+
+    <div id="results" style="flex: 1; overflow-y: auto; padding-right: 5px;">
+        </div>
+</div>

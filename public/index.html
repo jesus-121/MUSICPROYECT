@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMER Music | Estación de Radio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-window">
+        <div class="window-header">
+            <div class="brand">IMER MUSIC 94.9 Comitán</div>
+            
+            <a href="#" onclick="loadView('inicio.html', document.querySelectorAll('.nav-link')[0]); return false;" class="logo-link">
+                <img src="Recursos/logoimer.png" alt="IMER Logo" class="logo-img">
+            </a>
+        </div>
+
+        <div class="main-layout">
+            <main id="mainContent"></main>
+
+            <aside class="side-queue">
+                <div class="queue-header">
+                    <span>PRÓXIMO AL AIRE</span>
+                    <span id="queueCount" class="badge">0</span>
+                </div>
+                
+                <div id="queueList" class="queue-list">
+                    <div class="empty-queue-msg">Cola vacía</div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="mini-player">
+            <div class="player-info">
+                <div class="on-air-status">
+                    <span class="dot"></span> EN VIVO
+                </div>
+                <strong id="miniTitle">Sin reproducir</strong>
+                <small id="miniArtist">IMER FM</small>
+            </div>
+            
+            <div class="player-controls">
+                <div class="control-btns">
+                    <button class="nav-link-icon" onclick="saltarAnterior()">⏮</button>
+                    <button id="playPauseBtn" class="btn-main-player">▶</button>
+                    <button class="nav-link-icon" onclick="saltarSiguiente()">⏭</button>
+                </div>
+                <div class="seek-bar-container">
+                    <div class="progress-container">
+                        <div id="progressFill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="player-extra">
+                <span style="font-size:14px;">🔊</span>
+                <input type="range" id="volumeControlMini" class="vol-input" min="0" max="1" step="0.1" value="1">
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="nav-link active" onclick="loadView('inicio.html', this)">INICIO</button>
+            <button class="nav-link" onclick="loadView('buscador.html', this)">BUSCAR</button>
+            <button class="nav-link" onclick="loadView('reproductor.html', this)">DISCO</button>
+            <button class="nav-link" onclick="loadView('gestion.html', this)">GESTIÓN</button>
+        </div>
+    </div>
+
+    <audio id="mainAudio"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

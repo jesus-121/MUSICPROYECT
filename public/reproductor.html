@@ -1,0 +1,23 @@
+<div style="display: flex; height: 100%; gap: 15px;">
+    <div style="flex: 1.5; background: #181818; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; align-items: center; border: 1px solid #282828;">
+        <div class="visualizer-container">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+        <div id="discoVerde" style="width: 160px; height: 160px; background: #000; border-radius: 50%; border: 5px solid var(--primary); display: flex; align-items: center; justify-content: center; margin: 15px 0;">
+            <span style="font-size: 50px;">💿</span>
+        </div>
+        <h2 id="viewTitle" style="margin: 0; font-size: 18px;">IMER Music</h2>
+        <p id="viewArtist" style="color: var(--text-muted); font-size: 14px;">94.9 FM</p>
+        
+        <div class="progress-container"><div id="progressFill" class="progress-bar-fill"></div></div>
+        
+        <p style="font-size: 10px; color: var(--primary); letter-spacing: 2px; font-weight: 800;">SISTEMA DIGITAL</p>
+    </div>
+
+    <div style="flex: 1; background: #000; border-radius: 20px; padding: 15px; border: 1px solid #282828; display: flex; flex-direction: column;">
+        <h3 style="font-size: 11px; color: var(--primary); margin-bottom: 10px; text-transform: uppercase;">Sugerencias</h3>
+        <div id="reproductorSugerencias" style="overflow-y: auto; flex: 1;"></div>
+    </div>
+</div>

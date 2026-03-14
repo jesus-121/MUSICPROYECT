@@ -1,0 +1,25 @@
+<div class="view">
+    <div class="card" style="background: var(--gradient-main); border: none; padding: 40px 20px; text-align: center; color: white; margin-bottom: 25px; border-radius: 30px; position: relative; overflow: hidden;">
+        <div style="position: relative; z-index: 2;">
+            <h1 style="margin: 0; font-size: 32px; letter-spacing: 2px;">IMER 94.9</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9; font-weight: 300;">Instituto Mexicano de la Radio</p>
+        </div>
+        <div style="position: absolute; top: -20px; right: -20px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+    </div>
+
+    <h3 style="color: var(--text-main); font-size: 16px; margin-bottom: 15px; padding-left: 5px;">Módulo del Sistema</h3>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="card module-card" onclick="loadView('buscador.html', document.querySelectorAll('.nav-link')[1])">
+            <div class="user-tag" style="margin-bottom: 10px; width: 45px; height: 45px; font-size: 18px;">🔍</div>
+            <h4 style="margin: 0;">Buscador</h4>
+            <p style="margin: 5px 0 0 0; font-size: 11px; color: var(--text-muted);">Explorar biblioteca musical</p>
+        </div>
+
+        <div class="card module-card" onclick="loadView('gestion.html', document.querySelectorAll('.nav-link')[3])">
+            <div class="user-tag" style="margin-bottom: 10px; width: 45px; height: 45px; font-size: 18px; background: #f1f5f9; color: var(--primary-dark);">⚙️</div>
+            <h4 style="margin: 0;">Gestión</h4>
+            <p style="margin: 5px 0 0 0; font-size: 11px; color: var(--text-muted);">Administrar base de datos</p>
+        </div>
+    </div>
+</div>

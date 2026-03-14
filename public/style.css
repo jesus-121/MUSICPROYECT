@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root { 
+    /* Colores originales de IMER Music */
+    --primary: #00e676; 
+    --primary-dark: #00a854;
+    --primary-light: rgba(0, 230, 118, 0.1); 
+    --bg-window: #000000; 
+    --bg-card: rgba(30, 41, 59, 0.7); /* Modificado a cristal para mejor estética */
+    --text-main: #ffffff; 
+    --text-muted: #94a3b8;
+    --gradient-main: linear-gradient(135deg, #00e676 0%, #00a854 100%);
+}
+
+body { 
+    background: #0f172a; 
+    font-family: 'Outfit', sans-serif; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
+    color: var(--text-main); 
+}
+
+/* --- ESTRUCTURA PRINCIPAL --- */
+.app-window { 
+    width: 950px; /* Un poco más ancho para dar espacio a la cola */
+    height: 850px; 
+    background: var(--bg-window); 
+    border-radius: 30px; 
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5); 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden; 
+    border: 1px solid #1e293b; 
+    position: relative;
+}
+
+.window-header { 
+    padding: 15px 30px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-bottom: 1px solid #1e293b; 
+    background: rgba(0,0,0,0.2); 
+}
+
+.brand { font-weight: 800; color: var(--primary); font-size: 20px; letter-spacing: -1px; }
+
+/* Logo interactivo IMER */
+.logo-link { 
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; 
+    transition: 0.3s; 
+}
+
+.logo-link:hover { 
+    transform: scale(1.1); 
+    filter: drop-shadow(0 0 10px var(--primary)); 
+}
+
+.logo-img { 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid var(--primary); 
+}
+
+/* --- NUEVO LAYOUT DIVIDIDO PARA COLA --- */
+.main-layout { display: flex; flex: 1; overflow: hidden; width: 100%; }
+
+/* Espacio inferior reservado para el reproductor (80px) + navegación (65px) */
+main { 
+    flex: 1; 
+    padding: 20px 25px; 
+    overflow-y: auto; 
+    padding-bottom: 160px; 
+    /* AJUSTE DE GESTIÓN PROFESIONAL */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Contenedor de las dos columnas de gestión */
+.admin-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; 
+    gap: 15px;
+    align-items: start;
+}
+
+/* PANEL DE COLA (SIDEBAR) */
+.side-queue {
+    width: 260px; /* Reducido levemente para dar más aire al main */
+    min-width: 260px;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(255,255,255,0.05);
+    display: flex; 
+    flex-direction: column; 
+    padding: 20px;
+}
+
+/* BLINDAJE: Ocultar cualquier barra lateral que se duplique dentro del main */
+main .side-queue, 
+main .on-air-status,
+main .queue-header {
+    display: none !important;
+}
+
+.queue-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 20px; 
+    font-weight: 800; 
+    font-size: 12px; 
+    color: var(--primary);
+    text-transform: uppercase;
+}
+
+.badge { background: var(--primary); color: #000; padding: 2px 8px; border-radius: 10px; font-size: 10px; }
+
+.queue-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+
+/* --- INDICADOR EN VIVO --- */
+.on-air-status { 
+    font-size: 10px; 
+    font-weight: 800; 
+    color: var(--primary); 
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    margin-bottom: 5px;
+}
+.dot { 
+    width: 8px; 
+    height: 8px; 
+    background: var(--primary); 
+    border-radius: 50%; 
+    animation: blink 1.5s infinite; 
+}
+
+@keyframes blink { 
+    0% { opacity: 1; box-shadow: 0 0 5px var(--primary); } 
+    50% { opacity: 0.3; } 
+    100% { opacity: 1; box-shadow: 0 0 5px var(--primary); } 
+}
+
+/* --- BLOQUE DE TARJETAS MODERNO (ESTILO CRISTAL) --- */
+.card.module-card, .song-item, .queue-item, .admin-section { 
+    display: flex !important; 
+    padding: 20px !important; 
+    background: var(--bg-card) !important; 
+    backdrop-filter: blur(12px) !important; /* Efecto cristal */
+    border-radius: 24px !important; 
+    margin-bottom: 15px !important; 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+    
+    /* Borde fino y elegante */
+    border: 1px solid rgba(0, 230, 118, 0.2) !important; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+    box-sizing: border-box;
+}
+
+/* Mantiene las canciones en horizontal y los módulos en vertical */
+.song-item, .queue-item { flex-direction: row !important; align-items: center !important; cursor: pointer !important; }
+.card.module-card { flex-direction: column !important; text-align: center; align-items: center !important; cursor: pointer !important; }
+.admin-section { flex-direction: column !important; cursor: default !important; height: fit-content; }
+
+.queue-item { padding: 10px !important; border-radius: 12px !important; }
+
+.card.module-card:hover, .song-item:hover, .queue-item:hover { 
+    /* Brillo elegante al pasar el mouse */
+    border-color: var(--primary) !important; 
+    box-shadow: 0 0 25px rgba(0, 230, 118, 0.4) !important;
+    transform: translateY(-8px) scale(1.02) !important;
+    background: rgba(0, 230, 118, 0.05) !important;
+}
+
+/* --- CORRECCIÓN DE ICONOS --- */
+.icon-container {
+    width: 60px; height: 60px; 
+    background: transparent !important; /* Forzar transparencia total */
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; margin-bottom: 12px;
+}
+
+/* Forzar que nada dentro de las tarjetas de inicio tenga fondo blanco residual */
+.card.module-card div, .card.module-card img, .user-tag {
+    background-color: transparent !important;
+}
+
+.song-info { flex: 1; margin-left: 15px; text-align: left; }
+.song-info strong { display: block; font-size: 15px; color: #fff; margin-bottom: 3px; }
+.song-info small { color: var(--primary); font-size: 12px; font-weight: 600; }
+
+/* --- MINI REPRODUCTOR PROFESIONAL --- */
+.mini-player {
+    position: absolute; 
+    bottom: 65px; 
+    left: 0; 
+    right: 0;
+    height: 80px; 
+    background: rgba(0, 0, 0, 0.9); 
+    backdrop-filter: blur(15px);
+    border-top: 1px solid #23b766;
+    display: flex; 
+    align-items: center; 
+    padding: 0 25px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+.player-info { width: 25%; display: flex; flex-direction: column; }
+.player-info strong { font-size: 13px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-info small { color: var(--primary); font-size: 10px; font-weight: 600; }
+
+.player-controls { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.control-btns { display: flex; align-items: center; gap: 15px; }
+
+.btn-main-player {
+    background: #fff; 
+    color: #000; 
+    border: none; 
+    border-radius: 50%;
+    width: 35px; 
+    height: 35px; 
+    cursor: pointer; 
+    font-size: 14px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    transition: 0.2s;
+}
+.btn-main-player:hover { background: var(--primary); transform: scale(1.1); }
+
+.nav-link-icon { background: none; border: none; color: white; cursor: pointer; font-size: 18px; }
+
+/* Barra interactiva */
+.progress-container { 
+    flex: 1; 
+    height: 4px; 
+    background: #38dd59; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    position: relative; 
+}
+.progress-bar-fill { 
+    height: 100%; 
+    background: var(--gradient-main); 
+    width: 0%; 
+    border-radius: 10px; 
+    transition: width 0.1s linear; 
+}
+
+.player-extra { width: 25%; display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+.vol-input { accent-color: var(--primary); width: 70px; cursor: pointer; }
+
+/* --- NAVEGACIÓN INFERIOR --- */
+.bottom-nav { 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+    display: flex; 
+    justify-content: space-around; 
+    padding: 15px; 
+    background: #0f172a; 
+    border-top: 1px solid #48dc77; 
+    height: 65px; 
+    box-sizing: border-box; 
+    z-index: 101;
+}
+.nav-link { 
+    background: none; 
+    border: none; 
+    color: #64748b; 
+    cursor: pointer; 
+    font-weight: 700; 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    transition: 0.3s; 
+}
+.nav-link.active { color: var(--primary); text-shadow: 0 0 8px rgba(0, 230, 118, 0.4); }
+
+/* --- COMPONENTES DE AUDIO --- */
+.visualizer-container { 
+    display: flex; 
+    align-items: flex-end; 
+    gap: 3px; 
+    height: 35px; 
+    justify-content: center; 
+    margin-bottom: 10px; 
+}
+.bar { 
+    width: 4px; 
+    background: var(--gradient-main); 
+    border-radius: 2px; 
+    height: 3px; 
+    transition: 0.1s; 
+}
+
+/* Grid de 12 Géneros para Gestión */
+.genre-grid-admin {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+/* Botones de Género */
+.genre-tag { 
+    background: #0a0a0a; 
+    color: #f8fafc; 
+    border: 1px solid #05d443; 
+    padding: 8px 4px; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    font-size: 10px; 
+    font-weight: 600;
+    text-align: center;
+}
+.genre-tag.active { background: var(--gradient-main); color: #000; font-weight: 800; border: none; }
+
+/* --- FORMULARIOS Y GESTIÓN --- */
+.admin-input { 
+    width: 100%; 
+    padding: 14px; 
+    background: #1e293b; 
+    border: 1px solid #334155; 
+    color: #fff; 
+    border-radius: 15px; 
+    margin-bottom: 15px; 
+    box-sizing: border-box; 
+    font-family: 'Outfit';
+}
+
+.btn-save {
+    background: var(--gradient-main);
+    color: #000000;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    width: 100%;
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+/* Ajuste del DropZone */
+#dropZone {
+    border: 2px dashed #75e071;
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Scrollbar Personalizado */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Estilo para el icono dentro de la tarjeta */
+.card.module-card .user-tag {
+    margin-bottom: 10px;
+}
